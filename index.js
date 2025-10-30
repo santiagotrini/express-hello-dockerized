@@ -22,4 +22,10 @@ const app = express();
 
 app.get('/', (req, res) => { res.send('Hello world'); });
 
+app.get('/api/sqltime', (req, res) => {
+  conn.query('SELECT CURRENT_TIMESTAMP', (err, rs) => {
+    res.status(200).json(rs);
+  });
+});
+
 app.listen(3000, () => { console.log(`Server listening`); });
